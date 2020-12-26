@@ -4,6 +4,7 @@ var urlsToCache = [
   '/styles/main.css',
   '/script/main.js',
   'index.html',
+  'https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple';
 ];
 
 self.addEventListener('install', function(event) {
