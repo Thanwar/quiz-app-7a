@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { QuestionCard } from "./components/QuestionCard";
 import { fetchQuestions, Difficulty, QuestionState } from "./API/Api";
 import { GlobalStyle, Wrapper } from "./App.style";
+import firebase from "./firebase";
+
 
 
 type AnswerObject = {
@@ -12,6 +14,14 @@ type AnswerObject = {
 };
 
 function App() {
+
+    const messaging = firebase.messaging();
+    messaging.requestPermission().then(()=>{
+      return messaging.getToken();
+    }).then((token)=>{
+      console.log('token',token);
+      
+    })
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState<QuestionState[]>([]);
   const [number, setNumber] = useState(0);
